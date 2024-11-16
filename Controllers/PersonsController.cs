@@ -16,5 +16,29 @@ namespace WebListaC2.Controllers
         {
             return View(persons);
         }
+
+        //método para llamar el formulario
+        public IActionResult Create() 
+        { 
+            return View(); 
+        }
+
+        //método para guardarel registro
+        [HttpPost]
+        public IActionResult Create(Person person)
+        {
+            new Person 
+            { 
+                PersonId = person.PersonId, FirstName = person.FirstName, 
+                LastName = person.LastName, 
+                Age = person.Age 
+            };
+
+            persons.Add(person);
+            return RedirectToAction("Index");
+        }
+
+
+
     }
 }
